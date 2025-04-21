@@ -1,15 +1,13 @@
 export class HomeModel {
-    numberList = [];
+    inventoryList = null;
 
-    getNumberList() {
-        return this.numberList
+    constructor() {
+        this.inventoryList = [];
     }
 
-    addNumber(number) {
-        this.numberList.push(number);
+    addNewInventory(item) {
+        this.inventoryList.push(item);
+        this.inventoryList.sort((a, b) => a.name.localeCompare(b.name));
     }
-
-    reset() {
-        this.numberList = [];
-    }
+    
 }

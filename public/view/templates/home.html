@@ -1,13 +1,29 @@
-<button id="generateDataButton" class="btn btn-outline-info">
-    Generate Table Data
-</button>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>N</th>
-            <th>N<sup>2</sup></th>
-            <th>N<sup>3</sup></th>
-        </tr>
-    </thead>
-    <tbody></tbody>
-</table>
+<div class="card mt-2 rounded-0" style="background-color: rgb(220, 220, 220);">
+    <form name="formCreateItem">
+        <div class="d-flex ps-5 my-5">
+            <input type="text" class="form-control w-50" name="itemName" placeholder="Item name" required minlength="2">
+            <button type="submit" class="btn btn-outline-primary ms-3" id="btnCreate">Create</button>
+        </div>
+    </form>
+
+    <!-- placeholder -->
+    <div class="container-fluid mb-5 ps-5">
+        <div class="d-flex flex-wrap gap-1">
+            <!-- Card Template -->
+            <!-- <div class="card bg-light" style="min-width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title mt-2">Apple</h5>
+                    <div class="d-flex align-items-center flex-nowrap mt-2">
+                        <button type="button" class="btn btn-outline-danger me-2">-</button>
+                        <h5 class="me-2 mb-0">2</h5>
+                        <button type="button" class="btn btn-outline-primary me-2">+</button>
+                        <button type="button" class="btn btn-outline-primary me-2">Update</button>
+                        <button type="button" class="btn btn-outline-secondary ms-auto">Cancel</button>
+                    </div>
+                </div>
+            </div> -->
+            <!-- Additional Cards (same structure) -->
+            <!-- ... -->
+        </div>
+    </div>
+</div>
