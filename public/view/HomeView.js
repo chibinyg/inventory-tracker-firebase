@@ -86,6 +86,7 @@ export class HomeView extends AbstractView {
         btnMinus.dataset.name = item.name; 
 
         const quantity = document.createElement('h5');
+        quantity.id = `qty-${item.name}`; 
         quantity.className = 'me-2 mb-0';
         quantity.textContent = item.qty;
 
@@ -93,17 +94,19 @@ export class HomeView extends AbstractView {
         btnPlus.type = 'button';
         btnPlus.className = 'btn btn-outline-primary me-2 plus-button';
         btnPlus.textContent = '+';
-        btnPlus.dataset.name = item.name;
+        btnPlus.dataset.name = item.name; 
 
         const btnUpdate = document.createElement('button');
         btnUpdate.type = 'button';
-        btnUpdate.className = 'btn btn-outline-primary me-2';
+        btnUpdate.className = 'btn btn-outline-primary me-2 update-button';
         btnUpdate.textContent = 'Update';
+        btnUpdate.dataset.name = item.name; 
 
         const btnCancel = document.createElement('button');
         btnCancel.type = 'button';
-        btnCancel.className = 'btn btn-outline-secondary ms-auto';
+        btnCancel.className = 'btn btn-outline-secondary ms-auto cancel-button';
         btnCancel.textContent = 'Cancel';
+        btnCancel.dataset.name = item.name; 
 
         // Append buttons and quantity to control row
         controlRow.appendChild(btnMinus);
@@ -137,7 +140,16 @@ export class HomeView extends AbstractView {
             button.onclick = this.controller.onClickPlusButton;
         }
 
+        const btnUpdate = document.querySelectorAll('.update-button');
+        for (const button of btnUpdate) {
+            button.onclick = this.controller.onClickUpdateButton;
+        }
 
+
+        const btnCancel = document.querySelectorAll('.cancel-button');
+        for (const button of btnCancel) {
+            button.onclick = this.controller.onClickCancelButton;
+        }
     }
 
     async onLeave() {

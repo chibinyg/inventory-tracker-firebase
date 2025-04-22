@@ -6,6 +6,10 @@ import {
     orderBy,
     getDocs,
     where,
+    updateDoc,
+    doc,
+    deleteDoc,
+    getDoc,
 } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
 
 import { app } from "./firebase_core.js";
@@ -39,4 +43,34 @@ export async function getInventoryList() {
         inventoryList.push(item);
     });
     return inventoryList;
+}
+
+export async function updateInventoryById(docId, update) {
+    const docRef = doc(db, COLLECTION_INVENTORY, docId);
+    await updateDoc(docRef, update);
+}
+
+export async function deleteInventoryById(docId) {
+    const docRef = doc(db, COLLECTION_INVENTORY, docId);
+    await deleteDoc(docRef);
+}
+
+export async function getInventoryQtyById(docId) {
+    const docRef = doc(db, COLLECTION_INVENTORY, docId);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+        const data = docSnap.data();
+        return data.qty;
+    }
+}
+
+export async function inventoryItemExists(email, name) {
+    const q = query(
+        collection(db, COLLECTION_INVENTORY),
+        where('email', '==', email),
+        where('name', '==', name)
+    );
+    const querySnapshot = await getDocs(q);
+    return !querySnapshot.empty;
 }
